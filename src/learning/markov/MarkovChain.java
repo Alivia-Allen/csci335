@@ -31,21 +31,14 @@ public class MarkovChain<L,S> {
     // Should pass SimpleMarkovTest.testCreateChains().
     public void count(Optional<S> prev, L label, S next) {
         // a comment
-        if label.contains(LinkedHashMap<>){
-            print("Yes");
-            }
-        else{
-           LinkedHashMap<> labelHash = new HashMap<>();
-            LinkedHashMap<L>.append(labelHash);
-            } 
-        if prev.contains(Histogram){
-            print("Yes");
+        if (!label2symbol2symbol.containsKey(label)) {
+            label2symbol2symbol.put(label, new HashMap<>());
         }
-        else{
-            Histogram<> prevHistogram = new Histogram <>();
-            HashMap<Optional<S>.append(prevHistogram)
-                }
-        bumpBy(value, 1);
+        HashMap<Optional<S>, Histogram<S>> labelMap = label2symbol2symbol.get(label);
+        if (!labelMap.containsKey(prev)) {
+            labelMap.put(prev, new Histogram<>());
+        }
+        labelMap.get(prev).bumpBy(next, 1);
     }
 
     // Returns P(sequence | label)
