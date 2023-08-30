@@ -47,7 +47,10 @@ public class MarkovChain<L,S> {
     // HINT: Be sure to add 1 to both the numerator and denominator when finding the probability of a
     // transition. This helps avoid sending the probability to zero.
     public double probability(ArrayList<S> sequence, L label) {
-        // TODO: YOUR CODE HERE
+        HashMap<Optional<S>, Histogram<S>> labelMap = label2symbol2symbol.get(label);
+        double PV = 0;
+        Optional<S> Prev = Optional.empty();
+
         return 0.0;
     }
 
