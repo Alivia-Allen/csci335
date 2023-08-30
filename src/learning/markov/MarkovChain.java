@@ -30,7 +30,21 @@ public class MarkovChain<L,S> {
     // Increase the count for the transition from prev to next.
     // Should pass SimpleMarkovTest.testCreateChains().
     public void count(Optional<S> prev, L label, S next) {
-        // TODO: YOUR CODE HERE
+        if label.contains(LinkedHashMap<>){
+            print("Yes");
+            }
+        else{
+           LinkedHashMap<> labelHash = new HashMap<>();
+            LinkedHashMap<L>.append(labelHash);
+            } 
+        if prev.contains(Histogram){
+            print("Yes");
+        }
+        else{
+            Histogram<> prevHistogram = new Histogram <>();
+            HashMap<Optional<S>.append(prevHistogram)
+                }
+        bumpBy(value, 1);
     }
 
     // Returns P(sequence | label)
