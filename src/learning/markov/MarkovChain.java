@@ -48,9 +48,11 @@ public class MarkovChain<L,S> {
     // transition. This helps avoid sending the probability to zero.
     public double probability(ArrayList<S> sequence, L label) {
         HashMap<Optional<S>, Histogram<S>> labelMap = label2symbol2symbol.get(label);
-        double PV = 0;
+        double PV = ;
         Optional<S> Prev = Optional.empty();
+        for (int i = 0; i < sequence.size(); i++) {
 
+        }
         return 0.0;
     }
 
