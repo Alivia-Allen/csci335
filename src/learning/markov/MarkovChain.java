@@ -56,6 +56,8 @@ public class MarkovChain<L,S> {
                 Histogram<S> histogram = labelMap.get(Prev);
                 double numerator = histogram.getCountFor(item) + 1;
                 double denomenator = histogram.getTotalCounts() + 1;
+                //System.out.println(numerator);
+                //System.out.println(denomenator);
                 PV = PV * (numerator/denomenator);
             }
             Prev = Optional.of(item);
@@ -66,8 +68,12 @@ public class MarkovChain<L,S> {
     // Return a map from each label to P(label | sequence).
     // Should pass MajorMarkovTest.testSentenceDistributions()
     public LinkedHashMap<L,Double> labelDistribution(ArrayList<S> sequence) {
-        // TODO: YOUR CODE HERE
-        return null;
+        LinkedHashMap <L,Double> sendThrough = new LinkedHashMap<>();
+        for (L label : label2symbol2symbol.keySet()){
+            double calcProb = probability(sequence, label);
+            sendThrough.put(label, calcProb);
+            }
+        return sendThrough;
     }
 
     // Calls labelDistribution(). Returns the label with highest probability.
