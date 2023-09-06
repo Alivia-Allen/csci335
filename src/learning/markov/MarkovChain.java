@@ -56,14 +56,17 @@ public class MarkovChain<L,S> {
                 Histogram<S> histogram = labelMap.get(Prev);
                 double numerator = histogram.getCountFor(item) + 1;
                 double denomenator = histogram.getTotalCounts() + 1;
+                //double potentialProb = numerator / denomenator;
+
                 //System.out.println(numerator);
                 //System.out.println(denomenator);
-                PV = PV * (numerator/denomenator);
+                PV *= (numerator/denomenator);
             }
             Prev = Optional.of(item);
         }
         return PV;
     }
+
 
     // Return a map from each label to P(label | sequence).
     // Should pass MajorMarkovTest.testSentenceDistributions()
