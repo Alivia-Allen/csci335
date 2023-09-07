@@ -13,6 +13,8 @@ public class QTable {
     //  Calculate the learning rate using this formula: 1/(1 + total visits for this (state, action) pair/rateConstant)
     //  Should pass QTableTest.testLearningRate().
     public double getLearningRate(int state, int action) {
+        // 1/(1 + total visits for this (state, action) pair/rateConstant)
+
         return 0.0;
     }
 
