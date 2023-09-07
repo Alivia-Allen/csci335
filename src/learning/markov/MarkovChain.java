@@ -75,6 +75,7 @@ public class MarkovChain<L,S> {
         for (L label : label2symbol2symbol.keySet()){
             double calcProb = probability(sequence, label);
             sendThrough.put(label, calcProb);
+
             }
         return sendThrough;
     }
@@ -83,6 +84,7 @@ public class MarkovChain<L,S> {
     // Should pass MajorMarkovTest.bestChainTest()
     public L bestMatchingChain(ArrayList<S> sequence) {
         // TODO: YOUR CODE HERE
+
         return null;
     }
 }
