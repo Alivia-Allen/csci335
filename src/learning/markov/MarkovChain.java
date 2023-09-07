@@ -51,17 +51,12 @@ public class MarkovChain<L,S> {
         double PV = 1.0;
         Optional<S> Prev = Optional.empty();
 
-        for (S item : sequence){
-            if (labelMap.containsKey(Prev)){
-                Histogram<S> histogram = labelMap.get(Prev);
-                double numerator = histogram.getCountFor(item) + 1;
-                double denomenator = histogram.getTotalCounts() + 1;
-                //double potentialProb = numerator / denomenator;
+        for (S item : sequence) {
+            Histogram<S> histogram = labelMap.getOrDefault(Prev, new Histogram<>());
+            double numerator = histogram.getCountFor(item) + 1;
+            double denominator = histogram.getTotalCounts() + histogram.size() + 1;
 
-                //System.out.println(numerator);
-                //System.out.println(denomenator);
-                PV *= (numerator/denomenator);
-            }
+            PV *= (numerator / denominator);
             Prev = Optional.of(item);
         }
         return PV;
@@ -76,13 +71,29 @@ public class MarkovChain<L,S> {
             double calcProb = probability(sequence, label);
             sendThrough.put(label, calcProb);
             }
-        return sendThrough;
+        for (){
+
+        }
+        return //sendThrough;
     }
 
     // Calls labelDistribution(). Returns the label with highest probability.
     // Should pass MajorMarkovTest.bestChainTest()
     public L bestMatchingChain(ArrayList<S> sequence) {
-        // TODO: YOUR CODE HERE
-        return null;
+        LinkedHashMap<L, Double> labelProb = labelDistribution(sequence);
+
+        double maxProb = -1.0;
+        L maxProbLabel = null;
+
+        for (L label : labelProb.keySet()) {
+            double probability = labelProb.get(label);
+
+            if (probability > maxProb) {
+                maxProb = probability;
+                maxProbLabel = label;
+            }
+        }
+
+        return maxProbLabel;
     }
 }
