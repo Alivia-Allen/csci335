@@ -66,16 +66,22 @@ public class MarkovChain<L,S> {
     // Return a map from each label to P(label | sequence).
     // Should pass MajorMarkovTest.testSentenceDistributions()
     public LinkedHashMap<L,Double> labelDistribution(ArrayList<S> sequence) {
-        LinkedHashMap <L,Double> sendThrough = new LinkedHashMap<>();
-        for (L label : label2symbol2symbol.keySet()){
+        LinkedHashMap<L, Double> sendThrough = new LinkedHashMap<>();
+        double totalProb = 0.0;
+        for (L label : label2symbol2symbol.keySet()) {
             double calcProb = probability(sequence, label);
             sendThrough.put(label, calcProb);
-            }
-        for (){
-
+            totalProb += calcProb;
         }
-        return //sendThrough;
+        for (L label : sendThrough.keySet()) {
+            double labelProb = sendThrough.get(label);
+            double langDivProb = labelProb / totalProb;
+            sendThrough.put(label, langDivProb);
+        }
+
+        return sendThrough;
     }
+
 
     // Calls labelDistribution(). Returns the label with highest probability.
     // Should pass MajorMarkovTest.bestChainTest()
